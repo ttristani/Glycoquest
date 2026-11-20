@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GlycoQuest</title>
+  <meta name="description" content="Suivi ludique de la glycémie, des repas et du traitement GLP-1">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="GlycoQuest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-title" id="topTitle">GlycoQuest</div>
+    <button class="xp-chip" id="xpChip" aria-label="Niveau et points">⭐ <span id="xpChipText">Niv. 1</span></button>
+  </header>
+
+  <main id="main" class="main"></main>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="accueil" class="active"><span class="ico">🏠</span><span>Accueil</span></button>
+    <button data-tab="glycemie"><span class="ico">🩸</span><span>Glycémie</span></button>
+    <button data-tab="repas"><span class="ico">🍽️</span><span>Repas</span></button>
+    <button data-tab="traitement"><span class="ico">💉</span><span>Traitement</span></button>
+    <button data-tab="trophees"><span class="ico">🏆</span><span>Trophées</span></button>
+  </nav>
+
+  <div class="sheet-backdrop" id="sheetBackdrop" hidden></div>
+  <section class="sheet" id="sheet" hidden aria-modal="true" role="dialog"></section>
+
+  <div class="toast" id="toast" hidden></div>
+  <div id="confetti"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+    }
+  </script>
+</body>
+</html>
